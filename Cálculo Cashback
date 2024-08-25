@@ -1,0 +1,41 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Digite o nome do cliente: ");
+        String nome = scanner.nextLine();
+        System.out.print("Digite a idade do cliente: ");
+        int idade = scanner.nextInt();
+        System.out.print("Digite o valor da compra utilizando ponto para casa decimál (.): ");
+        double valorCompra = scanner.nextDouble();
+
+        //Tive que fazer uma pesquisa para saber como faria essa parte do cógido.
+        //double armazena números com casas decimais
+        double cashbackPercentual = 0.0;
+
+        if (idade >= 21 && valorCompra < 1000) {
+            cashbackPercentual = 0.05; // 5%
+        } else if (idade < 21 && valorCompra < 1000) {
+            cashbackPercentual = 0.07; // 7%
+        } else if (idade >= 21 && valorCompra >= 1000) {
+            cashbackPercentual = 0.07; // 7%
+        } else if (idade < 21 && valorCompra >= 1000) {
+            cashbackPercentual = 0.10; // 10%
+        }
+        //if / else. IF: verifica se a condição é verdadeira e aplica o comando.
+        //Else: Se a condição for falsa, aplica o outro comando inserido.
+        
+        double valorCashback = valorCompra * cashbackPercentual;
+        // Pega a variável "valorCompra" e múltiplica pelo valor da variável "cashbackPercentual", e armazena o resultado na variável "valorCashback".
+        
+        System.out.println("\nCliente: " + nome);
+        System.out.println("Idade: " + idade + " anos");
+        System.out.printf("Cashback: R$ %.2f%n", valorCashback);
+        // Saída dos dados: Saída do nome do cliente
+        //Saída da idade e adiciona a palavra "anos"
+        //Foi necessário fazer uma pesquisa para saber como mostrar o valor da variável "valorCashback" com as duas casas decimais. Código informado: %.2f%n
+        
+        scanner.close();
+    }
+}
